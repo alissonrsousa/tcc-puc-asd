@@ -1,9 +1,9 @@
 server:
   port: 9090
-
+  
 spring:
   cloud:
     config:
-      server:
+      server:              
         git:
-          uri: https://github.com/alissonrsousa/tcc-puc-asd/tree/master/code/application-config
+          uri: https://github.com/alissonrsousa/apps-config.git
