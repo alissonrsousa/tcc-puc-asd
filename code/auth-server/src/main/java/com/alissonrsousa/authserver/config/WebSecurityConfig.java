@@ -17,7 +17,7 @@ import com.alissonrsousa.authserver.service.UserDetailsService;
 @Configuration
 @EnableWebSecurity
 //@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-@Order(SecurityProperties.BASIC_AUTH_ORDER)
+@Order(SecurityProperties.BASIC_AUTH_ORDER - 2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
