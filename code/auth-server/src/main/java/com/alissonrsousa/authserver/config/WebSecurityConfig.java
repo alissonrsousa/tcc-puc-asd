@@ -16,8 +16,7 @@ import com.alissonrsousa.authserver.service.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-@Order(SecurityProperties.BASIC_AUTH_ORDER - 2)
+//@Order(SecurityProperties.IGNORED_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -28,7 +27,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(userDetailsService).passwordEncoder(new PasswordEncoder() {
+			
+			@Override
+			public boolean matches(CharSequence arg0, String arg1) {
+				// TODO Auto-generated method stub
+				return true;
+			}
+			
+			@Override
+			public String encode(CharSequence arg0) {
+				// TODO Auto-generated method stub
+				return arg0.toString();
+			}
+		});
     }
 
     @Override

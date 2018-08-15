@@ -1,0 +1,24 @@
+Postman:
+grant_type=client_credentials:
+http://localhost:8081/oauth/token?grant_type=client_credentials
+Basic Auth: 
+	- Username: curl_client
+	- Password: user
+	
+grant_type=password	
+http://localhost:8081/oauth/token?grant_type=password&username=oauth_admin&password=user
+Basic Auth: 
+	- Username: curl_client
+	- Password: user
+	
+OAuth Server Administration Dashboard:
+http://localhost:8081/
+	- Username: oauth_admin
+	- Password: user	
+	
+Fonte: 
+- https://medium.com/@akourtim.ahmed/oauth-2-centralized-authorization-with-spring-boot-2-0-2-and-spring-security-5-and-jdbc-token-store-8dbc063bd5d4
+Acessado em 14/08/2018	
+
+- https://coderef.com.br/arquitetura-de-microservices-com-spring-cloud-e-spring-boot-parte-2-ff03d8d45dba
+Acessado em 14/08/2018	
