@@ -1,4 +1,4 @@
-package com.aak.configuration;
+package com.alissonrsousa.authserver.configuration;
 
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 

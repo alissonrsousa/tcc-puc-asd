@@ -1,7 +1,5 @@
-package com.aak.api;
+package com.alissonrsousa.authserver.api;
 
-import com.aak.configuration.AuthorityPropertyEditor;
-import com.aak.configuration.SplitCollectionEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import com.alissonrsousa.authserver.configuration.AuthorityPropertyEditor;
+import com.alissonrsousa.authserver.configuration.SplitCollectionEditor;
 
 import java.util.Collection;
 import java.util.Set;

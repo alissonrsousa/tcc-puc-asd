@@ -1,4 +1,4 @@
-package com.aak.domain;
+package com.alissonrsousa.authserver.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 

@@ -1,7 +1,8 @@
-package com.aak.repository;
+package com.alissonrsousa.authserver.repository;
 
-import com.aak.domain.Credentials;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.alissonrsousa.authserver.domain.Credentials;
 
 /**
  * Created by ahmed on 21.5.18.

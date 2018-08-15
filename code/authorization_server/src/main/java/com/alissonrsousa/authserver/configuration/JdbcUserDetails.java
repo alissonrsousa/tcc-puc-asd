@@ -1,7 +1,8 @@
-package com.aak.configuration;
+package com.alissonrsousa.authserver.configuration;
 
-import com.aak.domain.Credentials;
-import com.aak.repository.CredentialRepository;
+import com.alissonrsousa.authserver.domain.Credentials;
+import com.alissonrsousa.authserver.repository.CredentialRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

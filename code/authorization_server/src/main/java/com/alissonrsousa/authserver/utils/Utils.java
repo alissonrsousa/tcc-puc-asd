@@ -1,4 +1,4 @@
-package com.aak.utils;
+package com.alissonrsousa.authserver.utils;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
