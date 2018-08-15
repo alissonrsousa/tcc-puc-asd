@@ -8,12 +8,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-/**
- * Created by ahmed on 21.5.18.
- */
 public class JdbcUserDetails implements UserDetailsService{
 
     @Autowired
@@ -31,7 +26,5 @@ public class JdbcUserDetails implements UserDetailsService{
         User user = new User(credentials.getName(),credentials.getPassword(),credentials.isEnabled(),true,true,true,credentials.getAuthorities());
 
         return  user;
-
-
     }
 }

@@ -23,9 +23,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 
-/**
- * Created by ahmed on 21.5.18.
- */
 @Controller
 public class LoginController {
     @Autowired

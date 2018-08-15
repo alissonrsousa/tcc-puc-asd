@@ -17,9 +17,6 @@ import com.alissonrsousa.authserver.configuration.SplitCollectionEditor;
 import java.util.Collection;
 import java.util.Set;
 
-/**
- * Created by ahmed on 21.5.18.
- */
 @Controller
 @RequestMapping("clients")
 public class ClientsController {
@@ -32,7 +29,6 @@ public class ClientsController {
         binder.registerCustomEditor(GrantedAuthority.class,new AuthorityPropertyEditor());
 
     }
-
 
     @RequestMapping(value="/form",method= RequestMethod.GET)
     @PreAuthorize("hasRole('ROLE_OAUTH_ADMIN')")

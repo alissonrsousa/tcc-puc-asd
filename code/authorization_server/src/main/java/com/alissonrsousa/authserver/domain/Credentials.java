@@ -5,10 +5,6 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by ahmed on 21.5.18.
- */
-
 @Entity
 @Table(name ="credentials")
 public class Credentials implements Serializable {

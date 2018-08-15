@@ -4,9 +4,6 @@ import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 
 import java.util.Collection;
 
-/**
- * Created by ahmed on 21.5.18.
- */
 public class SplitCollectionEditor extends CustomCollectionEditor{
 
     private final Class<? extends Collection> collectionType;

@@ -8,10 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by ahmed on 21.5.18.
- */
-
 @Entity
 public class Authority implements GrantedAuthority,Serializable {
     private static final long serialVersionUID = 1L;
