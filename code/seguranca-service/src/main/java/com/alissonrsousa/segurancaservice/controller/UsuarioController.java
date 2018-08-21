@@ -13,7 +13,7 @@ import com.alissonrsousa.segurancaservice.model.Usuario;
 import com.alissonrsousa.segurancaservice.service.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/api/usuario", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/usuarios", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UsuarioController {
 	
     @Autowired

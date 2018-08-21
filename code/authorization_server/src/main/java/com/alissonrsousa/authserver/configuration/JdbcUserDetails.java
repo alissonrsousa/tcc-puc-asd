@@ -17,14 +17,10 @@ public class JdbcUserDetails implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Credentials credentials = credentialRepository.findByName(username);
-
         if(credentials==null){
-
             throw new UsernameNotFoundException("User"+username+"can not be found");
         }
-
         User user = new User(credentials.getName(),credentials.getPassword(),credentials.isEnabled(),true,true,true,credentials.getAuthorities());
-
         return  user;
     }
 }
