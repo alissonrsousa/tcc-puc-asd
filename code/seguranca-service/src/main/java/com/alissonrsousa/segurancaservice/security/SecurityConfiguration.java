@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
@@ -15,30 +14,30 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 @EnableResourceServer
 public class SecurityConfiguration  extends ResourceServerConfigurerAdapter {
 	
-//	@Value("authserver.hostname")
-//	private String oauth_url;
-//	
-//	@Value("security.oauth2.client.resourceId")
-//	private String resourceId;
-//	
-//	@Value("security.oauth2.client.clientId")
-//	private String clientId;
-//	
-//	@Value("security.oauth2.client.clientSecret")
-//	private String clientSecret;
+	@Value("${authserver.hostname}")
+	private String oauth_url;
+	
+	@Value("${security.oauth2.client.resourceId}")
+	private String resourceId;
+	
+	@Value("${security.oauth2.client.clientId}")
+	private String clientId;
+	
+	@Value("${security.oauth2.client.clientSecret}")
+	private String clientSecret;
 	
     @Bean
     public RemoteTokenServices remoteTokenServices() {
         final RemoteTokenServices tokenServices = new RemoteTokenServices();
-        tokenServices.setCheckTokenEndpointUrl("http://localhost:9092/oauth/check_token");
-        tokenServices.setClientId("curl_client");
-        tokenServices.setClientSecret("user");
+        tokenServices.setCheckTokenEndpointUrl(oauth_url + "/oauth/check_token");
+        tokenServices.setClientId(clientId);
+        tokenServices.setClientSecret(clientSecret);
         return tokenServices;
     }
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.tokenServices(remoteTokenServices()).resourceId("product_api");
+        resources.tokenServices(remoteTokenServices()).resourceId(resourceId);
     }
 
     @Override
