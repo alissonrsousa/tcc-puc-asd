@@ -63,7 +63,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-    	
+    	oauthServer.checkTokenAccess("isAuthenticated()");
     }
 
     @Override
