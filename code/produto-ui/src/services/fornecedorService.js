@@ -10,9 +10,11 @@ export default {
     HttpService.get(endPoint, null, 'json', callback)
   },
   findAll (callback) {
-	  var me = this;
-	  me.itens = ['aaaaa','bbbbb'];
-	  callback(me.itens);
+    let endPoint = 'produto/fornecedores'
+    HttpService.get(endPoint, null, 'json', callback)	  
+//	  var me = this;
+//	  me.itens = ['aaaaa','bbbbb'];
+//	  callback(me.itens);
   },
   salvarCheckin (checkin, callback) {
     let endPoint = 'visita/salvar'
