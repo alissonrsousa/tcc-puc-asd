@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import fornecedorService from '@/services/fornecedorService'
-
 import jquery from '@/static/jquery/jquery.min.js'
 import bootstrap from '@/static/bootstrap/js/bootstrap.min.js'
 import metisMenu from '@/static/metisMenu/metisMenu.min.js'
