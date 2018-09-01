@@ -52,6 +52,7 @@ public class SecurityConfiguration  extends ResourceServerConfigurerAdapter {
 		bean.setOrder(0);
 		return bean;
 	}
+	
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenServices(remoteTokenServices()).resourceId(resourceId);
