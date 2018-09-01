@@ -7,11 +7,7 @@ export default {
 
   get (endPoint, parametros, formato, callback, callbackErro) {
     let errorCallback = callbackErro || callback
-    Vue.http.get(endPoint, {
-    	headers: {
-            Authorization: 'Basic dXNlcjpwYXNzd29yZA=='
-        }
-    }).then(this.sucessHandler(callback), this.errorHandler(errorCallback))
+    Vue.http.get(endPoint, parametros, {}).then(this.sucessHandler(callback), this.errorHandler(errorCallback))
   },
 
   post (endPoint, parametros, formato, callback, callbackErro) {

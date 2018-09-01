@@ -11,7 +11,7 @@ Vue.use(VueResource)
 Vue.http.options.credentials = true;
 Vue.http.interceptors.push((request, next) => {
 	console.log('aaaaaaaaaaaaaaaaaaaaaaa')
-  request.headers.set('Authorization', 'Bearer 58731d3c-2ecb-44b4-9b32-cac9127c2e17')
+  request.headers.set('Authorization', 'Bearer d5b60671-dd2c-4492-9ff4-b2d8e0c11bc4')
   request.headers.set('Accept', 'application/json')
   next()
 })
