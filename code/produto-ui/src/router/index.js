@@ -12,16 +12,18 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+      children: [
+	    {
+	      path: '/produto/fornecedores',
+	      name: 'Fornecedores',
+	      component: Fornecedores
+	    }
+	  ]
     },
     {
       path: '/login',
       name: 'Login',
       component: Login,
-    },
-    {
-      path: '/produto/fornecedores',
-      name: 'Fornecedores',
-      component: Fornecedores,
     }
   ],
 });

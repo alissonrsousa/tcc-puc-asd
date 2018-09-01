@@ -34,11 +34,6 @@
 </template>
 
 <script>
-import jquery from '@/static/jquery/jquery.min.js'
-import bootstrap from '@/static/bootstrap/js/bootstrap.min.js'
-import metisMenu from '@/static/metisMenu/metisMenu.min.js'
-import sb_admin from '@/static/sb-admin-2/js/sb-admin-2.js'
-
 import Vue from 'vue'
 
 export default {

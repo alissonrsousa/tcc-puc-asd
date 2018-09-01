@@ -53,13 +53,12 @@ export default {
 
   errorHandler (callback) {
     return function (erro) {
-      console.log(erro.data.status + ':' + erro.data.error)
-      if (String(erro.data.status) === String(403)) {
+      if ((String(erro.data.status) === String(403)) || (String(erro.data.status) === String(401))) {
     	  alert('Sua sessão expirou. Favor realizar o login novamente.')
     	  location.href = '/#/login';
       }
       else {
-    	  alert('Ops...<br/>Ocorreu um erro ao processar uma requisição. Persistindo o erro, favor informar ao administrador da aplicação.')
+//    	  alert('Ops...<br/>Ocorreu um erro ao processar uma requisição. Persistindo o erro, favor informar ao administrador da aplicação.')
     	  location.href = '/#/login';    	  
       }
       if (callback) {

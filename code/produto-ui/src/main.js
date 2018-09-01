@@ -13,6 +13,9 @@ Vue.http.interceptors.push((request, next) => {
 	if (request.url.indexOf('/oauth/') != -1) {
 		request.headers.set('Authorization', 'Basic Y3VybF9jbGllbnQ6dXNlcg==');
 	}
+	else if (!localStorage.getItem('authorization') || localStorage.getItem('authorization') == '') {
+		location.href = '#/login';
+	}
 	else {
 		request.headers.set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('authorization')));
 	}

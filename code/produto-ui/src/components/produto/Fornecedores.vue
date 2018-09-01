@@ -75,7 +75,6 @@ export default {
         var me = this
         fornecedorService.findAll(function (retorno) {
         	me.itens = retorno;
-          console.log(retorno)
         })
     }
   }
