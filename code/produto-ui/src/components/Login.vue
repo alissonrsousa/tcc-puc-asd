@@ -35,6 +35,12 @@
 
 <script>
 import fornecedorService from '@/services/fornecedorService'
+
+import jquery from '@/static/jquery/jquery.min.js'
+import bootstrap from '@/static/bootstrap/js/bootstrap.min.js'
+import metisMenu from '@/static/metisMenu/metisMenu.min.js'
+import sb_admin from '@/static/sb-admin-2/js/sb-admin-2.js'
+
 import Vue from 'vue'
 
 export default {
@@ -59,10 +65,10 @@ export default {
 
 //           ir para a home do sistema
           location.href = '/';
-          this.$router.push({name: 'index'});
+//           this.$router.push({name: 'index'});
         }, err => {
-          console.log(err);
-          console.log("erro ao realizar o login");
+//           console.log(err);
+          alert('erro ao realizar o login');
         }
       );
     }

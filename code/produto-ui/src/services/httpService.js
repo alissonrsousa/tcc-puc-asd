@@ -22,7 +22,7 @@ export default {
 	  let xhr = new XMLHttpRequest()
 	  xhr.open('GET', url, true)
 	  xhr.setRequestHeader('Content-type', me.contentType['file'])
-	  xhr.setRequestHeader('authorization', 'Bearer ' + localStorage.getItem('default_auth_token'))
+	  xhr.setRequestHeader('authorization', 'Bearer ' + localStorage.getItem('authorization'))
 	  xhr.responseType = 'blob'
 	
 	  xhr.onreadystatechange = function () {
@@ -55,24 +55,12 @@ export default {
     return function (erro) {
       console.log(erro.data.status + ':' + erro.data.error)
       if (String(erro.data.status) === String(403)) {
-        Dialog.create({
-          title: 'Alerta',
-          message: 'Sua sessão expirou. Favor realizar o login novamente.',
-          buttons: [
-            {
-              label: 'OK',
-              handler () {
-                window.location = '/login'
-              }
-            }
-          ]
-        })
+    	  alert('Sua sessão expirou. Favor realizar o login novamente.')
+    	  location.href = '/#/login';
       }
       else {
-        Dialog.create({
-          title: 'Alerta',
-          message: 'Ops...<br/>Ocorreu um erro ao processar uma requisição. Persistindo o erro, favor informar ao administrador da aplicação.'
-        })
+    	  alert('Ops...<br/>Ocorreu um erro ao processar uma requisição. Persistindo o erro, favor informar ao administrador da aplicação.')
+    	  location.href = '/#/login';    	  
       }
       if (callback) {
         // eslint-disable-next-line
