@@ -19,7 +19,7 @@ public class FornecedorService {
         return FornecedorRepository.save(fornecedor);
     }
 
-    public Optional<Fornecedor> findById(Integer id){
+    public Optional<Fornecedor> findById(Long id){
         return FornecedorRepository.findById(id);
     }
 
@@ -27,7 +27,7 @@ public class FornecedorService {
         return FornecedorRepository.findAll();
     }
 
-    public void delete(Integer id) {
+    public void delete(Long id) {
         FornecedorRepository.deleteById(id);
     }
 }

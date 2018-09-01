@@ -1,18 +1,23 @@
 <template>
 
 	<div id="page-wrapper">
-	    <div class="row">
-	        <div class="col-lg-12">
-	            <h1 class="page-header">Fornecedores</h1>
-	        </div>
-	        <!-- /.col-lg-12 -->
-	    </div>
+<!-- 	    <div class="row"> -->
+<!-- 	        <div class="col-lg-12"> -->
+<!-- 	            <h1 class="page-header">Fornecedores</h1> -->
+<!-- 	        </div> -->
+<!-- 	        /.col-lg-12 -->
+<!-- 	    </div> -->
 	    <!-- /.row -->
 	    <div class="row">
 	        <div class="col-lg-12">
-	            <div class="panel panel-default">
+	            <div class="panel panel-default" style="margin-top: 20px;">
 	                <div class="panel-heading">
-	                    DataTables Advanced Tables
+	                    Fornecedores
+	                    <div style="position: absolute; right: 23px; top: 6px;">
+                        	<button type="button" class="btn btn-primary btn-circle" @click="cadastrar()">
+                            	<i class="fa fa-plus"></i>
+                        	</button>	                    
+	                    </div>
 	                </div>
 	                <!-- /.panel-heading -->
 	                <div class="panel-body">
@@ -25,6 +30,7 @@
 	                                <th>Cidade</th>
 	                                <th>Telefone</th>
 	                                <th>Contato</th>
+	                                <th>Ações</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
@@ -35,6 +41,14 @@
 	                                <td>{{item.cidade}}</td>
 	                                <td class="center">{{item.telafone1}}</td>
 	                                <td>{{item.contato}}</td>
+	                                <td>
+	                                	<button type="button" class="btn btn-primary btn-circle" @click="editar(item.id)">
+	                                		<i class="fa fa-edit"></i>
+                            			</button>
+                            			<button type="button" class="btn btn-danger btn-circle" @click="excluir(item.id)">
+	                                		<i class="fa fa-minus"></i>
+                            			</button>                            			
+                            		</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -65,17 +79,31 @@ export default {
     var me = this
     me.carregarItens()
   },
-  computed: {
-    user () {
-      return this.$auth.user()
-    }
-  },
   methods: {
-	  carregarItens () {
+	carregarItens () {
         var me = this
         fornecedorService.findAll(function (retorno) {
         	me.itens = retorno;
         })
+    },
+    editar (id) {
+    	var me = this;
+    	me.$router.push({ path: '/produto/fornecedores/' + id })
+    },
+    cadastrar () {
+    	var me = this;
+    	me.$router.push({ path: '/produto/fornecedores/novo' })
+    },
+    excluir (id) {
+    	var me = this;
+    	var confirmacao = confirm('Deseja realmente excluir este ítem?');
+    	if (confirmacao) {
+        	fornecedorService.excluir(id, function (retorno) {
+        		alert('Ítem excluído com sucesso!');
+        		location.reload();
+//         		vm.$forceUpdate();
+            })
+    	}
     }
   }
 };

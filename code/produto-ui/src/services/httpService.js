@@ -14,6 +14,11 @@ export default {
     let errorCallback = callbackErro || callback
     Vue.http.post(endPoint, parametros, {}).then(this.sucessHandler(callback), this.errorHandler(errorCallback))
   },
+  
+  delete (endPoint, parametros, formato, callback, callbackErro) {
+    let errorCallback = callbackErro || callback
+    Vue.http.delete(endPoint, parametros, {}).then(this.sucessHandler(callback), this.errorHandler(errorCallback))
+  },  
 
   downloadFile (endPoint, nomeArquivo, callback) {
 	  var me = this
