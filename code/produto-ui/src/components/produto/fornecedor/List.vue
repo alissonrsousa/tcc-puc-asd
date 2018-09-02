@@ -1,13 +1,6 @@
 <template>
 
 	<div id="page-wrapper">
-<!-- 	    <div class="row"> -->
-<!-- 	        <div class="col-lg-12"> -->
-<!-- 	            <h1 class="page-header">Fornecedores</h1> -->
-<!-- 	        </div> -->
-<!-- 	        /.col-lg-12 -->
-<!-- 	    </div> -->
-	    <!-- /.row -->
 	    <div class="row">
 	        <div class="col-lg-12">
 	            <div class="panel panel-default" style="margin-top: 20px;">
@@ -30,7 +23,7 @@
 	                                <th>Cidade</th>
 	                                <th>Telefone</th>
 	                                <th>Contato</th>
-	                                <th>Ações</th>
+	                                <th style="width: 82px;">Ações</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
@@ -66,42 +59,45 @@
 </template>
 
 <script>
-import fornecedorService from '@/services/fornecedorService'
+import genericService from '@/services/genericService'
 
 export default {
   name: 'Fornecedores',
   data () {
     return {
+      service: genericService,
+      route: 'produto/fornecedores',
       itens: []
     }
   },
   mounted () {
     var me = this
+    genericService.setBaseEndPoint(me.route)
     me.carregarItens()
   },
   methods: {
 	carregarItens () {
         var me = this
-        fornecedorService.findAll(function (retorno) {
+        me.service.findAll(function (retorno) {
         	me.itens = retorno;
         })
     },
     editar (id) {
     	var me = this;
-    	me.$router.push({ path: '/produto/fornecedores/' + id })
+    	me.$router.push({ path: '/' + me.route + '/' + id })
     },
     cadastrar () {
     	var me = this;
-    	me.$router.push({ path: '/produto/fornecedores/novo' })
+    	me.$router.push({ path: '/' + me.route + '/' + 'novo' })
     },
     excluir (id) {
     	var me = this;
     	var confirmacao = confirm('Deseja realmente excluir este ítem?');
     	if (confirmacao) {
-        	fornecedorService.excluir(id, function (retorno) {
+        	me.service.excluir(id, function (retorno) {
         		alert('Ítem excluído com sucesso!');
         		location.reload();
-//         		vm.$forceUpdate();
+//         		me.$forceUpdate();
             })
     	}
     }

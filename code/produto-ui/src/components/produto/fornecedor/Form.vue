@@ -6,7 +6,7 @@
            <div class="col-lg-12">
                <div class="panel panel-default" style="margin-top: 20px;">
                    <div class="panel-heading">
-                       Fornecedor: Fazenda da Mata
+                       Fornecedor: {{item.nomeFantasia}}
                    </div>
                    <div class="panel-body">
                        <div class="row">
@@ -47,17 +47,20 @@
 </template>
 
 <script>
-import fornecedorService from '@/services/fornecedorService'
+import genericService from '@/services/genericService'
 
 export default {
   name: 'EditFornecedor',
   data () {
     return {
+      service: genericService,
+      route: 'produto/fornecedores/',
       item: {}
     }
   },
   mounted () {
     var me = this
+    genericService.setBaseEndPoint(me.route)
     me.carregarItem()
   },
   methods: {
@@ -66,21 +69,21 @@ export default {
         var id = me.$route.params.id;
         
         if (id != 'novo') {
-            fornecedorService.findById(id, function (retorno) {
+        	me.service.findById(id, function (retorno) {
             	me.item = retorno;
             })
         }
     },
     cancelar () {
     	var me = this;
-    	me.$router.push({ path: '/produto/fornecedores'})
+    	me.$router.push({ path: '/' + me.route})
     },
     salvar () {
     	var me = this;
-        fornecedorService.salvar(me.item, function (retorno) {
+    	me.service.salvar(me.item, function (retorno) {
 			var acao = me.item.id ? 'atualizado' : 'cadastrado';
         	alert('Fornecedor ' + acao + ' com sucesso!');
-        	me.$router.push({ path: '/produto/fornecedores'})
+        	me.$router.push({ path: '/' + me.route})
         })
     }
   }
