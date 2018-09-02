@@ -1,3 +1,4 @@
+import HttpService from '@/services/httpService'
 
 export default {
 
@@ -25,6 +26,11 @@ export default {
 	sair () {
 	    localStorage.setItem('authorization', '');
 	    location.href = '#/login';
+	},
+	
+	findDadosUsuario (callback) {
+	    let endPoint = process.env.CONTEXTO + '/user'
+	    HttpService.get(endPoint, null, 'json', callback)
 	}
 
 }
