@@ -192,7 +192,12 @@ export default {
 	atualizarDadosUsuario () {
 	  var me = this;
 	  segurancaService.findDadosUsuario(function (retorno) {
-		  me.usuario = {nome : retorno};
+		  if(!retorno || retorno == "") {
+			  me.$router.push({ path: '/login'});
+		  }
+		  else {
+			  me.usuario = {nome : retorno};
+		  }
 	  });
 	}
 	
