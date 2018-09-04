@@ -17,23 +17,23 @@
 	                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 	                        <thead>
 	                            <tr>
-	                                <th>Código</th>
+	                                <th class="hidden-xs">Código</th>
 	                                <th>Nome</th>
-	                                <th>CNPJ</th>
-	                                <th>Cidade</th>
+	                                <th class="hidden-xs">CNPJ</th>
+	                                <th class="hidden-xs">Cidade</th>
 	                                <th>Telefone</th>
-	                                <th>Contato</th>
-	                                <th style="width: 82px;">Ações</th>
+	                                <th class="hidden-xs">Contato</th>
+	                                <th class="acoes-xs" style="width: 82px;">Ações</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
 	                            <tr class="odd gradeX" v-for="item in itens" :key="item.id">
-	                                <td class="center">{{item.id}}</td>
+	                                <td class="center hidden-xs">{{item.id}}</td>
 	                                <td>{{item.nomeFantasia}}</td>
-	                                <td class="center">{{item.cnpj}}</td>
-	                                <td>{{item.cidade}}</td>
+	                                <td class="center hidden-xs">{{item.cnpj}}</td>
+	                                <td class="hidden-xs">{{item.cidade}}</td>
 	                                <td class="center">{{item.telafone1}}</td>
-	                                <td>{{item.contato}}</td>
+	                                <td class="hidden-xs">{{item.contato}}</td>
 	                                <td>
 	                                	<button type="button" class="btn btn-primary btn-circle" @click="editar(item.id)">
 	                                		<i class="fa fa-edit"></i>
@@ -107,5 +107,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+	@media (max-width:767px) {
+		.hidden-xs {
+			display:none !important
+		}
+		.acoes-xs {
+			width: 30px !important
+		}
+	}
 
 </style>
