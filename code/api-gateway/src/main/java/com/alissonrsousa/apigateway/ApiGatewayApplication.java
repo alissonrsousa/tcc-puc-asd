@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alissonrsousa.apigateway.filter.SimpleFilter;
 
 @EnableZuulProxy
-@EnableEurekaClient
 @EnableDiscoveryClient
 @SpringBootApplication
 @RestController
