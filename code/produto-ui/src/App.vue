@@ -10,8 +10,6 @@ import bootstrap from '@/static/bootstrap/js/bootstrap.min.js'
 import metisMenu from '@/static/metisMenu/metisMenu.min.js'
 import sb_admin from '@/static/sb-admin-2/js/sb-admin-2.js'
 
-import segurancaService from '@/services/segurancaService'
-
 export default {
   name: 'App'
 };

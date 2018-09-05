@@ -54,13 +54,14 @@ export default {
   data () {
     return {
       service: genericService,
+      restService: 'produto-service/',
       route: 'produto/fornecedores/',
       item: {}
     }
   },
   mounted () {
     var me = this
-    genericService.setBaseEndPoint(me.route)
+    genericService.setBaseEndPoint(me.restService + me.route)
     me.carregarItem()
   },
   methods: {

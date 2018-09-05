@@ -1,15 +1,16 @@
+import Vue from 'vue'
 import HttpService from '@/services/httpService'
 
 export default {
 
-	login () {
+	login (usuario, senha) {
 	      var me = this
 	      var formData = new FormData();
-	      formData.append('username', me.usuario);
-	      formData.append('password', me.senha);
+	      formData.append('username', usuario);
+	      formData.append('password', senha);
 	      formData.append('grant_type', 'password');
 
-	      Vue.http.post('http://localhost:9092/oauth/token', formData, {})
+	      Vue.http.post(process.env.AUTHORIZATION_SERVER + '/oauth/token', formData, {})
 	      .then((response) => {
 	          localStorage.setItem('authorization', JSON.stringify(response.body.access_token));
 
@@ -29,7 +30,7 @@ export default {
 	},
 	
 	findDadosUsuario (callback) {
-	    let endPoint = process.env.CONTEXTO + '/user'
+	    let endPoint = process.env.CONTEXTO + '/api/user'
 	    HttpService.get(endPoint, null, 'json', callback)
 	}
 
