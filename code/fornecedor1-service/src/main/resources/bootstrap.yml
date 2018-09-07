@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: fornecedor-service
+
+server:
+  port: 9999
+
+authserver:
+  hostname: http://localhost:9092
+security:
+  oauth2:
+    client:
+        resourceId: product_api
+        clientId: curl_client
+        clientSecret: user
+        scope: read,write
+        auto-approve-scopes: '.*'
+  
+    resource:
+      userInfoUri: ${authserver.hostname}/user

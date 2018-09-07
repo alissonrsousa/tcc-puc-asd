@@ -1,60 +1,41 @@
-package com.alissonrsousa.produtoservice.model;
+package com.alissonrsousa.fornecedorservice.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
-@Entity
-@Table(name="produto")
-@NamedQuery(name="Produto.findAll", query="SELECT p FROM Produto p")
 public class Produto implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="id")
 	private Long id;
 
-	@Column(name="codigo_barras")
 	private String codigoBarras;
 
-	@Column(name="descricao")
 	private String descricao;
 
-	@Column(name="imagem")
 	private String imagem;
 
-	@Column(name="marca")
 	private String marca;
 
-	@Column(name="nome")
 	private String nome;
 
-	@Column(name="peso_liquido")
 	private double pesoLiquido;
 
-	@Column(name="ponto_reposicao")
 	private int pontoReposicao;
 
-	@Column(name="preco_custo")
-	private double precoCusto;
+	private double preco;
 
-	@Column(name="unidade")
 	private String unidade;
 
-	@Column(name="valor_unitario")
 	private double valorUnitario;
 
-	@Column(name="volume")
 	private double volume;
 	
-	@Column(name="prazo_entrega")
 	private int prazoEntrega;
 	
-	@Column(name="estoque")
+	private double valorFrete;
+	
 	private double estoque;
 
-	@ManyToOne
-	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
 
 	public Produto() {
@@ -124,12 +105,20 @@ public class Produto implements Serializable {
 		this.pontoReposicao = pontoReposicao;
 	}
 
-	public double getPrecoCusto() {
-		return this.precoCusto;
+	public double getPreco() {
+		return preco;
 	}
 
-	public void setPrecoCusto(double precoCusto) {
-		this.precoCusto = precoCusto;
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public double getValorFrete() {
+		return valorFrete;
+	}
+
+	public void setValorFrete(double valorFrete) {
+		this.valorFrete = valorFrete;
 	}
 
 	public String getUnidade() {

@@ -1,21 +1,10 @@
-package com.alissonrsousa.produtoservice.model;
+package com.alissonrsousa.fornecedorservice.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
-
-/**
- * The persistent class for the fornecedor database table.
- * 
- */
-@Entity
-@Table(name="fornecedor")
-@NamedQuery(name="Fornecedor.findAll", query="SELECT f FROM Fornecedor f")
 public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private String bairro;
@@ -36,27 +25,22 @@ public class Fornecedor implements Serializable {
 
 	private String endereco;
 
-	@Column(name="endereco_id")
 	private int enderecoId;
 
 	private String estado;
 
-	@Column(name="funcao_contato")
 	private String funcaoContato;
 
-	@Column(name="nome_fantasia")
 	private String nomeFantasia;
 
 	private String numero;
 
-	@Column(name="razao_social")
 	private String razaoSocial;
 
 	private String telafone1;
 
 	private String telefone2;
 
-	@Column(name="usuario_id")
 	private int usuarioId;
 
 	public Fornecedor() {

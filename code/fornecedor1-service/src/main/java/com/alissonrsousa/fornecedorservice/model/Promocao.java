@@ -1,30 +1,15 @@
-package com.alissonrsousa.produtoservice.model;
+package com.alissonrsousa.fornecedorservice.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
-
-/**
- * The persistent class for the promocao database table.
- * 
- */
-@Entity
-@Table(name="promocao")
-@NamedQuery(name="Promocao.findAll", query="SELECT p FROM Promocao p")
 public class Promocao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="data_fim")
 	private Date dataFim;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="data_inicio")
 	private Date dataInicio;
 
 	private String descricao;
