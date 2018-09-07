@@ -25,7 +25,7 @@ public class FornecedorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Fornecedor>> findById(@PathVariable("id") Long id){
+    public ResponseEntity<Optional<Fornecedor>> findById(@PathVariable("id") Integer id){
         return ResponseEntity.ok(FornecedorService.findById(id));
     }
 
@@ -35,7 +35,7 @@ public class FornecedorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> delete(@PathVariable("id") Long id){
+    public ResponseEntity<?> delete(@PathVariable("id") Integer id){
         FornecedorService.delete(id);
         return ResponseEntity.ok().build();
     }

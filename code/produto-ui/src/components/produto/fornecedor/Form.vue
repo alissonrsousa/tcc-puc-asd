@@ -24,7 +24,15 @@
                                        <label>Contato</label>
                                        <input class="form-control" v-model="item.contato"> 
                                        <label>Função Contato</label>
-                                       <input class="form-control" v-model="item.funcaoContato">                                                                             
+                                       <input class="form-control" v-model="item.funcaoContato">  
+                                       <label>Url Integração</label>
+                                       <input class="form-control" v-model="item.urlIntegracao">  
+                                       <label>Usuário Integração</label>
+                                       <input class="form-control" v-model="item.usuarioIntegracao">  
+                                       <label>Senha Integração</label>
+                                       <input class="form-control" v-model="item.senhaIntegracao">  
+                                       <label>Url Oauth Integração</label>
+                                       <input class="form-control" v-model="item.urlOauthIntegracao">                                                                             
                                    </div>                                 
                                    <button type="submit" class="btn btn-default" @click="salvar()">Salvar</button>
                                    <button type="reset" class="btn btn-default" @click="cancelar()">Cancelar</button>

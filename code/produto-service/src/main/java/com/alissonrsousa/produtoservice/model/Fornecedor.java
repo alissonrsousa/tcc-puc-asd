@@ -3,11 +3,6 @@ package com.alissonrsousa.produtoservice.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
-/**
- * The persistent class for the fornecedor database table.
- * 
- */
 @Entity
 @Table(name="fornecedor")
 @NamedQuery(name="Fornecedor.findAll", query="SELECT f FROM Fornecedor f")
@@ -16,7 +11,7 @@ public class Fornecedor implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	private String bairro;
 
@@ -35,9 +30,21 @@ public class Fornecedor implements Serializable {
 	private String email;
 
 	private String endereco;
+	
+	@Column(name="url_integracao")
+	private String urlIntegracao;
+	
+	@Column(name="usuario_integracao")
+	private String usuarioIntegracao;
+	
+	@Column(name="senha_integracao")
+	private String senhaIntegracao;
+	
+	@Column(name="url_oauth_integracao")
+	private String urlOauthIntegracao;
 
 	@Column(name="endereco_id")
-	private int enderecoId;
+	private Integer enderecoId;
 
 	private String estado;
 
@@ -57,16 +64,16 @@ public class Fornecedor implements Serializable {
 	private String telefone2;
 
 	@Column(name="usuario_id")
-	private int usuarioId;
+	private Integer usuarioId;
 
 	public Fornecedor() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -142,11 +149,11 @@ public class Fornecedor implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public int getEnderecoId() {
+	public Integer getEnderecoId() {
 		return this.enderecoId;
 	}
 
-	public void setEnderecoId(int enderecoId) {
+	public void setEnderecoId(Integer enderecoId) {
 		this.enderecoId = enderecoId;
 	}
 
@@ -206,12 +213,44 @@ public class Fornecedor implements Serializable {
 		this.telefone2 = telefone2;
 	}
 
-	public int getUsuarioId() {
+	public Integer getUsuarioId() {
 		return this.usuarioId;
 	}
 
-	public void setUsuarioId(int usuarioId) {
+	public void setUsuarioId(Integer usuarioId) {
 		this.usuarioId = usuarioId;
+	}
+
+	public String getUrlIntegracao() {
+		return urlIntegracao;
+	}
+
+	public void setUrlIntegracao(String urlIntegracao) {
+		this.urlIntegracao = urlIntegracao;
+	}
+
+	public String getUsuarioIntegracao() {
+		return usuarioIntegracao;
+	}
+
+	public void setUsuarioIntegracao(String usuarioIntegracao) {
+		this.usuarioIntegracao = usuarioIntegracao;
+	}
+
+	public String getSenhaIntegracao() {
+		return senhaIntegracao;
+	}
+
+	public void setSenhaIntegracao(String senhaIntegracao) {
+		this.senhaIntegracao = senhaIntegracao;
+	}
+
+	public String getUrlOauthIntegracao() {
+		return urlOauthIntegracao;
+	}
+
+	public void setUrlOauthIntegracao(String urlOauthIntegracao) {
+		this.urlOauthIntegracao = urlOauthIntegracao;
 	}
 
 }

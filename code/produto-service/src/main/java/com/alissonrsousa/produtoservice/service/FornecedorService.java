@@ -13,21 +13,21 @@ import com.alissonrsousa.produtoservice.repository.FornecedorRepository;
 public class FornecedorService {
 
     @Autowired
-    private FornecedorRepository FornecedorRepository;
+    private FornecedorRepository fornecedorRepository;
 
     public Fornecedor save(@Validated Fornecedor fornecedor) {
-        return FornecedorRepository.save(fornecedor);
+        return fornecedorRepository.save(fornecedor);
     }
 
-    public Optional<Fornecedor> findById(Long id){
-        return FornecedorRepository.findById(id);
+    public Optional<Fornecedor> findById(Integer id){
+        return fornecedorRepository.findById(id);
     }
 
     public Iterable<Fornecedor> findAll(){
-        return FornecedorRepository.findAll();
+        return fornecedorRepository.findAll();
     }
 
-    public void delete(Long id) {
-        FornecedorRepository.deleteById(id);
+    public void delete(Integer id) {
+        fornecedorRepository.deleteById(id);
     }
 }
