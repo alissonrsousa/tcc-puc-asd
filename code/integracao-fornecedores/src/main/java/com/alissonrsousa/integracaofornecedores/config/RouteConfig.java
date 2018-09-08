@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.alissonrsousa.integracaofornecedores.rotas.FornecedoresRoute;
+import com.alissonrsousa.integracaofornecedores.rotas.ProcessarFornecedorRoute;
 import com.alissonrsousa.integracaofornecedores.rotas.RestTokenProducerRoute;
 
 @Configuration
@@ -21,7 +22,10 @@ public class RouteConfig extends SingleRouteCamelConfiguration {
 	private RestTokenProducerRoute tokenObj;
 	
 	@Autowired
-	private FornecedoresRoute produtosRoute;
+	private FornecedoresRoute fornecedoresRoute;
+	
+	@Autowired
+	private ProcessarFornecedorRoute processarFornecedorRoute;
 
 	@Override
 	public RouteBuilder route() {
@@ -38,7 +42,8 @@ public class RouteConfig extends SingleRouteCamelConfiguration {
 	    camelContext.setApplicationContext(getApplicationContext());
 //	    camelContext.addRoutes(route()); //Some other route
 	    camelContext.addRoutes(serviceTokenProducerRoute); //Token producer Route
-	    camelContext.addRoutes(produtosRoute); //Subsequent API call route
+	    camelContext.addRoutes(fornecedoresRoute); //Subsequent API call route
+	    camelContext.addRoutes(processarFornecedorRoute); //Subsequent API call route
 	    camelContext.start();
 	    return camelContext;
 	}
