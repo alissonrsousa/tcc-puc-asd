@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
 import com.alissonrsousa.integracaofornecedores.model.OauthToken;
-import com.alissonrsousa.integracaofornecedores.rotas.ProdutosRoute;
+import com.alissonrsousa.integracaofornecedores.rotas.FornecedoresRoute;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OauthProcessor implements Processor {

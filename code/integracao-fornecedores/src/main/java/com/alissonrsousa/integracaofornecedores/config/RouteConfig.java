@@ -8,7 +8,7 @@ import org.apache.camel.spring.javaconfig.SingleRouteCamelConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.alissonrsousa.integracaofornecedores.rotas.ProdutosRoute;
+import com.alissonrsousa.integracaofornecedores.rotas.FornecedoresRoute;
 import com.alissonrsousa.integracaofornecedores.rotas.RestTokenProducerRoute;
 
 @Configuration
@@ -21,7 +21,7 @@ public class RouteConfig extends SingleRouteCamelConfiguration {
 	private RestTokenProducerRoute tokenObj;
 	
 	@Autowired
-	private ProdutosRoute produtosRoute;
+	private FornecedoresRoute produtosRoute;
 
 	@Override
 	public RouteBuilder route() {
