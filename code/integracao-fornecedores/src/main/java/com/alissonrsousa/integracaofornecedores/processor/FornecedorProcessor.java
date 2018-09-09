@@ -42,7 +42,8 @@ public class FornecedorProcessor implements Processor {
 		headers.add("Authorization", "Bearer " + token.getAccess_token());
 		HttpEntity<String> request = new HttpEntity<String>(headers);
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<List<Produto>> response = restTemplate.exchange(fornecedor.getUrlIntegracao() + "/produtos", HttpMethod.GET, request, new ParameterizedTypeReference<List<Produto>>(){});
+		String param = fornecedor.getIdsProdutosFornecedor().toString().replace("[","").replace("]","").replaceAll(" ", "");
+		ResponseEntity<List<Produto>> response = restTemplate.exchange(fornecedor.getUrlIntegracao() + "/produtos/idsIn/" + param, HttpMethod.GET, request, new ParameterizedTypeReference<List<Produto>>(){});
 		return response.getBody();
 	}
 

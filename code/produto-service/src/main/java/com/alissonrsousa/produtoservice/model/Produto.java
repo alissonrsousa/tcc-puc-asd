@@ -30,28 +30,28 @@ public class Produto implements Serializable {
 	private String nome;
 
 	@Column(name="peso_liquido")
-	private double pesoLiquido;
+	private Double pesoLiquido;
 
 	@Column(name="ponto_reposicao")
-	private int pontoReposicao;
+	private Integer pontoReposicao;
 
 	@Column(name="preco_custo")
-	private double precoCusto;
+	private Double precoCusto;
 
 	@Column(name="unidade")
 	private String unidade;
 
 	@Column(name="valor_unitario")
-	private double valorUnitario;
+	private Double valorUnitario;
 
 	@Column(name="volume")
-	private double volume;
+	private Double volume;
 	
 	@Column(name="prazo_entrega")
-	private int prazoEntrega;
+	private Integer prazoEntrega;
 	
 	@Column(name="estoque")
-	private double estoque;
+	private Double estoque;
 
 	@ManyToOne
 	@JoinColumn(name="categoria_id")
@@ -108,27 +108,27 @@ public class Produto implements Serializable {
 		this.nome = nome;
 	}
 
-	public double getPesoLiquido() {
+	public Double getPesoLiquido() {
 		return this.pesoLiquido;
 	}
 
-	public void setPesoLiquido(double pesoLiquido) {
+	public void setPesoLiquido(Double pesoLiquido) {
 		this.pesoLiquido = pesoLiquido;
 	}
 
-	public int getPontoReposicao() {
+	public Integer getPontoReposicao() {
 		return this.pontoReposicao;
 	}
 
-	public void setPontoReposicao(int pontoReposicao) {
+	public void setPontoReposicao(Integer pontoReposicao) {
 		this.pontoReposicao = pontoReposicao;
 	}
 
-	public double getPrecoCusto() {
+	public Double getPrecoCusto() {
 		return this.precoCusto;
 	}
 
-	public void setPrecoCusto(double precoCusto) {
+	public void setPrecoCusto(Double precoCusto) {
 		this.precoCusto = precoCusto;
 	}
 
@@ -140,19 +140,19 @@ public class Produto implements Serializable {
 		this.unidade = unidade;
 	}
 
-	public double getValorUnitario() {
+	public Double getValorUnitario() {
 		return this.valorUnitario;
 	}
 
-	public void setValorUnitario(double valorUnitario) {
+	public void setValorUnitario(Double valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
-	public double getVolume() {
+	public Double getVolume() {
 		return this.volume;
 	}
 
-	public void setVolume(double volume) {
+	public void setVolume(Double volume) {
 		this.volume = volume;
 	}
 
@@ -164,19 +164,19 @@ public class Produto implements Serializable {
 		this.categoria = categoria;
 	}
 
-	public int getPrazoEntrega() {
+	public Integer getPrazoEntrega() {
 		return prazoEntrega;
 	}
 
-	public void setPrazoEntrega(int prazoEntrega) {
+	public void setPrazoEntrega(Integer prazoEntrega) {
 		this.prazoEntrega = prazoEntrega;
 	}
 
-	public double getEstoque() {
+	public Double getEstoque() {
 		return estoque;
 	}
 
-	public void setEstoque(double estoque) {
+	public void setEstoque(Double estoque) {
 		this.estoque = estoque;
 	}
 

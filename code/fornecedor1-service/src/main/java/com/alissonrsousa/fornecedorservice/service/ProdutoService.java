@@ -6,4 +6,5 @@ import com.alissonrsousa.fornecedorservice.model.Produto;
 public interface ProdutoService {
 	Produto findById(Long id);
 	List<Produto> findAll();
+	List<Produto> findByIdIn(List<Long> listaIds);
 }

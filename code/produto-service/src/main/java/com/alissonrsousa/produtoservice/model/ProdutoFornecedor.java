@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="produto_fornecedor")
 @NamedQuery(name="ProdutoFornecedor.findAll", query="SELECT p FROM ProdutoFornecedor p")
@@ -22,13 +24,18 @@ public class ProdutoFornecedor implements Serializable {
 		this.id = id;
 	}
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="fornecedor_id")
+	private Fornecedor fornecedor;
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="produto_id")
 	private Produto produto;
 	
-	@ManyToOne
-	@JoinColumn(name="fornecedor_id")
-	private Fornecedor fornecedor;
+	@Column(name="id_produto_fornecedor")
+	private Long idProdutoFornecedor;
 	
 	@Column(name="preco")
 	private Double preco;
@@ -45,6 +52,14 @@ public class ProdutoFornecedor implements Serializable {
 	@Column(name="data_atualizacao")
 	private Date dataAtualizacao;
 
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
 	public Produto getProduto() {
 		return produto;
 	}
@@ -53,12 +68,12 @@ public class ProdutoFornecedor implements Serializable {
 		this.produto = produto;
 	}
 
-	public Fornecedor getFornecedor() {
-		return fornecedor;
+	public Long getIdProdutoFornecedor() {
+		return idProdutoFornecedor;
 	}
 
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setIdProdutoFornecedor(Long idProdutoFornecedor) {
+		this.idProdutoFornecedor = idProdutoFornecedor;
 	}
 
 	public Double getPreco() {

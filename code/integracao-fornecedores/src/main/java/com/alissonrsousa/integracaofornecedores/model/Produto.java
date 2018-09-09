@@ -1,5 +1,7 @@
 package com.alissonrsousa.integracaofornecedores.model;
 
+import java.util.List;
+
 public class Produto {
 	
 	private Long id;
@@ -16,6 +18,7 @@ public class Produto {
 	private double volume;
 	private int prazoEntrega;
 	private double estoque;
+	private List<ProdutoFornecedor> produtos;
 
 	public Produto() {
 	}
@@ -130,6 +133,14 @@ public class Produto {
 
 	public void setEstoque(double estoque) {
 		this.estoque = estoque;
+	}
+
+	public List<ProdutoFornecedor> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<ProdutoFornecedor> produtos) {
+		this.produtos = produtos;
 	}
 
 }

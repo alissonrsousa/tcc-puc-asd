@@ -2,6 +2,9 @@ package com.alissonrsousa.fornecedorservice.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +28,16 @@ public class ProdutoController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Iterable<Produto>> findAll(){
         return ResponseEntity.ok().body(produtoService.findAll());
+    }
+    
+    @RequestMapping(value = "/idsIn/{ids}", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Produto>> findByIds(@PathVariable("ids") String ids){
+    	String[] array = ids.split(",");
+    	List<Long> listaIds = new ArrayList<>();
+    	for (String id: array) {
+    		listaIds.add(Long.valueOf(id));
+    	}
+        return ResponseEntity.ok().body(produtoService.findByIdIn(listaIds));
     }
 
 }

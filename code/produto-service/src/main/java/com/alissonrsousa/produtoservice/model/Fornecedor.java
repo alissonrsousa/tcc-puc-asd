@@ -1,6 +1,8 @@
 package com.alissonrsousa.produtoservice.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -65,6 +67,9 @@ public class Fornecedor implements Serializable {
 
 	@Column(name="usuario_id")
 	private Integer usuarioId;
+	
+	@OneToMany(mappedBy="fornecedor")
+	private List<ProdutoFornecedor> produtos;
 
 	public Fornecedor() {
 	}
@@ -251,6 +256,14 @@ public class Fornecedor implements Serializable {
 
 	public void setUrlOauthIntegracao(String urlOauthIntegracao) {
 		this.urlOauthIntegracao = urlOauthIntegracao;
+	}
+
+	public List<ProdutoFornecedor> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<ProdutoFornecedor> produtos) {
+		this.produtos = produtos;
 	}
 
 }

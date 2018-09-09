@@ -43,4 +43,15 @@ public class ProdutoServiceImpl implements ProdutoService {
 		}
 	}
 
+	@Override
+	public List<Produto> findByIdIn(List<Long> listaIds) {
+		List<Produto> lista = new ArrayList<>();
+		for (Produto produto: produtos) {
+			if (listaIds.contains(produto.getId())) {
+				lista.add(produto);
+			}
+		}
+		return lista;
+	}
+
 }

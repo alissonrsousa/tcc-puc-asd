@@ -1,5 +1,8 @@
 package com.alissonrsousa.integracaofornecedores.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fornecedor {
 
 	private Integer id;
@@ -25,6 +28,7 @@ public class Fornecedor {
 	private String telafone1;
 	private String telefone2;
 	private Integer usuarioId;
+	private List<ProdutoFornecedor> produtos;
 
 	public Fornecedor() {
 	}
@@ -211,6 +215,22 @@ public class Fornecedor {
 
 	public void setUrlOauthIntegracao(String urlOauthIntegracao) {
 		this.urlOauthIntegracao = urlOauthIntegracao;
+	}
+
+	public List<ProdutoFornecedor> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<ProdutoFornecedor> produtos) {
+		this.produtos = produtos;
+	}
+	
+	public List<Long> getIdsProdutosFornecedor() {
+		List<Long> ids = new ArrayList<Long>();
+		for (ProdutoFornecedor produto: produtos) {
+			ids.add(produto.getIdProdutoFornecedor());
+		}
+		return ids;
 	}
 
 }
