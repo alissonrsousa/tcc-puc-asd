@@ -35,7 +35,7 @@
 	                                <td class="hidden-xs">{{item.cidade}}</td>
 	                                <td class="center">{{item.telafone1}}</td>
 	                                <td class="hidden-xs">{{item.contato}}</td>
-	                                <td><a href="#" @click="listarProdutos(item.id)" >{{item.produtos.length}}</a></td>
+	                                <td><a v-bind:href="'#/produto/fornecedores/' + item.id + '/produtos'" >{{item.produtos.length}}</a></td>
 	                                <td>
 	                                	<button type="button" class="btn btn-primary btn-circle" @click="editar(item.id)">
 	                                		<i class="fa fa-edit"></i>
