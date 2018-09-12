@@ -4,6 +4,7 @@ import Index from '@/components/Index';
 import Login from '@/components/Login';
 import ListFornecedores from '@/components/produto/fornecedor/List';
 import EditFornecedor from '@/components/produto/fornecedor/Form';
+import ListProdutosFornecedor from '@/components/produto/fornecedor/produto/List';
 
 Vue.use(Router);
 
@@ -23,6 +24,11 @@ export default new Router({
 		  path: '/produto/fornecedores/:id',
 		  name: 'EditFornecedor',
 		  component: EditFornecedor
+		},
+	    {
+		  path: '/produto/fornecedores/:id/produtos',
+		  name: 'ListProdutosFornecedor',
+		  component: ListProdutosFornecedor
 		}	    
 	  ]
     },

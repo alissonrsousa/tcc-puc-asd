@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.alissonrsousa.integracaofornecedores.model.Fornecedor;
@@ -14,16 +15,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class FornecedoresRoute extends RouteBuilder {
 	
-	private static final String URL_SERVICO_LISTA_FORNECEDORES = "http://localhost:8080/produto-service/produto/fornecedores";
+	@Value( "${lojaVirtual.api-gateway.url}")
+	private String urlApiGateway;
+	
+	private static final String URL_SERVICO_LISTA_FORNECEDORES = "/produto-service/produto/fornecedores";
+	
 	private static final String AUTHORIZATION_HEADER = "Authorization";
 	
 	@Override
 	public void configure() throws Exception {
-		from("timer://fornecedores?period=30000&delay=5000").routeId("rota_fornecedores")
+		from("timer://fornecedores?period=120000&delay=10000").routeId("rota_fornecedores")
 		.setHeader(Exchange.HTTP_METHOD, constant("GET"))
         .log("Token sendo passado ==> ${bean:tokenObj?method=getRefreshedToken}")
         .setHeader(AUTHORIZATION_HEADER, simple("Bearer " + "${bean:tokenObj?method=getRefreshedToken}"))
-		.to(URL_SERVICO_LISTA_FORNECEDORES)
+		.to(urlApiGateway + URL_SERVICO_LISTA_FORNECEDORES)
 		.process(new Processor() {
 			
 			@Override

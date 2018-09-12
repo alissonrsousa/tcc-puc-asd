@@ -1,31 +1,47 @@
 package com.alissonrsousa.integracaofornecedores.processor;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import com.alissonrsousa.integracaofornecedores.model.Fornecedor;
 import com.alissonrsousa.integracaofornecedores.model.OauthToken;
 import com.alissonrsousa.integracaofornecedores.model.Produto;
+import com.alissonrsousa.integracaofornecedores.model.ProdutoFornecedor;
+import com.alissonrsousa.integracaofornecedores.rotas.RestTokenProducerRoute;
 
 public class FornecedorProcessor implements Processor {
 
 	private Fornecedor fornecedor;
-	private OauthToken token;
 	
+	private OauthToken tokenFornecedor;
+	
+	private String urlApiGatewayLoja;
+	
+	public FornecedorProcessor(String urlApiGateway) {
+		this.urlApiGatewayLoja = urlApiGateway;
+	}
+
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		fornecedor = (Fornecedor) exchange.getIn().getBody();
-		token = realizarAutenticacao();
+		tokenFornecedor = realizarAutenticacao();
 		List<Produto> produtos = buscarProdutos();
+		atualizarProdutosLoja(produtos);
 	}
 
 	private OauthToken realizarAutenticacao() {
@@ -39,12 +55,47 @@ public class FornecedorProcessor implements Processor {
 	
 	private List<Produto> buscarProdutos() {
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Bearer " + token.getAccess_token());
+		headers.add("Authorization", "Bearer " + tokenFornecedor.getAccess_token());
 		HttpEntity<String> request = new HttpEntity<String>(headers);
 		RestTemplate restTemplate = new RestTemplate();
 		String param = fornecedor.getIdsProdutosFornecedor().toString().replace("[","").replace("]","").replaceAll(" ", "");
 		ResponseEntity<List<Produto>> response = restTemplate.exchange(fornecedor.getUrlIntegracao() + "/produtos/idsIn/" + param, HttpMethod.GET, request, new ParameterizedTypeReference<List<Produto>>(){});
 		return response.getBody();
+	}
+	
+	private void atualizarProdutosLoja(List<Produto> produtos) {
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Authorization", "Bearer " + RestTokenProducerRoute.getRefreshedToken());
+//		headers.add("Content-Type", "application/json");
+//		HttpEntity<String> request = new HttpEntity<String>(headers);
+//		RestTemplate restTemplate = new RestTemplate();
+		
+		List<ProdutoFornecedor> produtosFornecedor = new ArrayList<>();
+		for (Produto p: produtos) {
+			ProdutoFornecedor pf = new ProdutoFornecedor();
+			pf.setIdFornecedor(fornecedor.getId());
+			BeanUtils.copyProperties(p, pf);
+			pf.setIdProdutoFornecedor(p.getId());
+			produtosFornecedor.add(pf);
+		}
+		
+//		ResponseEntity<List<Produto>> response = restTemplate.exchange(urlApiGatewayLoja + "/produto-service/produto/fornecedores/produtos" + param, HttpMethod.POST, request);
+		
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+
+
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.add("Authorization", "Bearer " + RestTokenProducerRoute.getRefreshedToken());
+        requestHeaders.add("Content-Type", MediaType.APPLICATION_JSON.toString());
+
+        HttpEntity<List<ProdutoFornecedor>> request = new HttpEntity<List<ProdutoFornecedor>>(produtosFornecedor, requestHeaders);
+
+        String responseEntity = restTemplate.postForObject(urlApiGatewayLoja + "/produto-service/produto/fornecedores/produtos", request, String.class);
+        
+        System.out.println(responseEntity);
+		
 	}
 
 }

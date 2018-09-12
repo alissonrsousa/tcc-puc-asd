@@ -12,17 +12,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class RestTokenProducerRoute extends RouteBuilder {
 
-	@Value( "${lojaVirtual.security.oauth2.url}" )
+	@Value( "${lojaVirtual.security.oauth2.url}")
 	private String lojaVirtualOauthUrl;
 	
-	@Value( "${lojaVirtual.security.oauth2.authorizationHeader}" )
+	@Value( "${lojaVirtual.security.oauth2.authorizationHeader}")
 	private String lojaVirtualOauthAuthorizationHeader;
 	
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	private static final String AUTHORIZATION_HEADER = "Authorization";
 	
-    private String refreshedToken;
+    private static String refreshedToken; 
 
     @Override
     public void configure() throws Exception {
@@ -44,11 +44,11 @@ public class RestTokenProducerRoute extends RouteBuilder {
 		.log("${body}");
         }
 
-        public String getRefreshedToken() {
-            return refreshedToken;
+        public static String getRefreshedToken() {
+            return RestTokenProducerRoute.refreshedToken;
         }
 
-        public void setRefreshedToken(String refreshedToken) {
-            this.refreshedToken = refreshedToken;
+        private void setRefreshedToken(String refreshedToken) {
+        	RestTokenProducerRoute.refreshedToken = refreshedToken;
         }
 }

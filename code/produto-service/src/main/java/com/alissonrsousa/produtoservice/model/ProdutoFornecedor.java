@@ -34,6 +34,9 @@ public class ProdutoFornecedor implements Serializable {
 	@JoinColumn(name="produto_id")
 	private Produto produto;
 	
+	@Transient
+	private Integer idFornecedor;
+	
 	@Column(name="id_produto_fornecedor")
 	private Long idProdutoFornecedor;
 	
@@ -114,6 +117,18 @@ public class ProdutoFornecedor implements Serializable {
 
 	public void setValorFrete(Double valorFrete) {
 		this.valorFrete = valorFrete;
+	}
+
+	public Integer getIdFornecedor() {
+		return idFornecedor;
+	}
+
+	public void setIdFornecedor(Integer idFornecedor) {
+		this.idFornecedor = idFornecedor;
+	}
+	
+	public String getNomeProduto() {
+		return produto.getNome();
 	}
 
 }
