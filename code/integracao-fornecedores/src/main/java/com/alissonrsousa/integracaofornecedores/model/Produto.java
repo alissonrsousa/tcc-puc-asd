@@ -18,6 +18,7 @@ public class Produto {
 	private double volume;
 	private int prazoEntrega;
 	private double estoque;
+	private double valorFrete;
 	private List<ProdutoFornecedor> produtos;
 
 	public Produto() {
@@ -133,6 +134,14 @@ public class Produto {
 
 	public void setEstoque(double estoque) {
 		this.estoque = estoque;
+	}
+
+	public double getValorFrete() {
+		return valorFrete;
+	}
+
+	public void setValorFrete(double valorFrete) {
+		this.valorFrete = valorFrete;
 	}
 
 	public List<ProdutoFornecedor> getProdutos() {

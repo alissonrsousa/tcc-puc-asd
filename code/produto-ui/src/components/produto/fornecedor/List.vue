@@ -23,6 +23,7 @@
 	                                <th class="hidden-xs">Cidade</th>
 	                                <th>Telefone</th>
 	                                <th class="hidden-xs">Contato</th>
+	                                <th>Produtos</th>
 	                                <th class="acoes-xs" style="width: 82px;">Ações</th>
 	                            </tr>
 	                        </thead>
@@ -34,6 +35,7 @@
 	                                <td class="hidden-xs">{{item.cidade}}</td>
 	                                <td class="center">{{item.telafone1}}</td>
 	                                <td class="hidden-xs">{{item.contato}}</td>
+	                                <td><a href="#" @click="listarProdutos(item.id)" >{{item.produtos.length}}</a></td>
 	                                <td>
 	                                	<button type="button" class="btn btn-primary btn-circle" @click="editar(item.id)">
 	                                		<i class="fa fa-edit"></i>
@@ -101,6 +103,10 @@ export default {
 //         		me.$forceUpdate();
             })
     	}
+    },
+    listarProdutos (id) {
+    	var me = this;
+    	me.$router.push({ path: '/' + me.route + '/' + id + '/produtos' })
     }
   }
 };

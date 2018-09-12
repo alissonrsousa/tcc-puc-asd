@@ -47,7 +47,8 @@ public class FornecedorController {
     }
     
     @RequestMapping(value = "/produtos", method = RequestMethod.POST)
-    public void saveProdutos(@RequestBody List<ProdutoFornecedor> produtos){
+    public ResponseEntity<?> saveProdutos(@RequestBody List<ProdutoFornecedor> produtos){
         produtoFornecedorService.save(produtos);
+        return ResponseEntity.ok().build();
     }
 }

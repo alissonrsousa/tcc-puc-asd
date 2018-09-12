@@ -5,12 +5,7 @@
 	        <div class="col-lg-12">
 	            <div class="panel panel-default" style="margin-top: 20px;">
 	                <div class="panel-heading">
-	                    Fornecedor: {{item.nomeFantasia}}
-	                    <div style="position: absolute; right: 23px; top: 6px;">
-                        	<button type="button" class="btn btn-primary btn-circle" @click="cadastrar()">
-                            	<i class="fa fa-plus"></i>
-                        	</button>	                    
-	                    </div>
+	                    Produtos do fornecedor: {{item.nomeFantasia}}
 	                </div>
 	                <!-- /.panel-heading -->
 	                <div class="panel-body">
@@ -29,13 +24,14 @@
 	                            <tr class="odd gradeX" v-for="item in item.produtos" :key="item.id">
 	                                <td class="center hidden-xs">{{item.id}}</td>
 	                                <td>{{item.nomeProduto}}</td>
-	                                <td class="center hidden-xs">{{item.preco}}</td>
+	                                <td class="center hidden-xs">{{formatarValor(item.preco)}}</td>
 	                                <td class="hidden-xs">{{item.prazoEntrega}}</td>
-	                                <td class="center">{{item.estoque}}</td>
-	                                <td class="hidden-xs">{{item.valorFrete}}</td>
+	                                <td class="center">{{formatarValor(item.estoque)}}</td>
+	                                <td class="hidden-xs">{{formatarValor(item.valorFrete)}}</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
+	                    <button type="reset" class="btn btn-default" @click="cancelar()">Voltar</button>
 	                </div>
 	                <!-- /.panel-body -->
 	            </div>
@@ -76,6 +72,13 @@ export default {
         	me.item = retorno;
         	console.log(me.item.nomeFantasia);
         });
+    },
+    formatarValor(valor) {
+    	return parseFloat(valor).toFixed(2);
+    },
+    cancelar () {
+    	var me = this;
+    	me.$router.push({ path: '/' + me.route})
     }
   }
 };
