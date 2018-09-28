@@ -11,21 +11,61 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">LOGO</a>
                 <a class="navbar-brand" href="index.html">Roça Virtual</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-            	Olá, faça seu login ou cadastre-se
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Entrar</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> {{usuario.nome}}</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Cadastrar</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configurações</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#" @click="sair()"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -49,7 +89,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Produtos Orgânicos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Produto<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Categorias</a>
@@ -67,7 +107,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Doces<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Segurança<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Módulo</a>
@@ -85,7 +125,7 @@
                             <!-- /.nav-second-level -->
                         </li>                         
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Queijos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Cliente<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Clientes</a>
@@ -94,7 +134,7 @@
                             <!-- /.nav-second-level -->
                         </li> 
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Verduras<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Loja<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Formas Pagamento</a>
@@ -113,16 +153,7 @@
                                 </li>                                                               
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Frutas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Clientes</a>
-                                </li>                               
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>                                                                         
+                        </li>                                                
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -160,7 +191,14 @@ export default {
 	
 	atualizarDadosUsuario () {
 	  var me = this;
-
+	  segurancaService.findDadosUsuario(function (retorno) {
+		  if(!retorno || retorno == "") {
+			  me.$router.push({ path: '/login'});
+		  }
+		  else {
+			  me.usuario = {nome : retorno};
+		  }
+	  });
 	}
 	
   }
