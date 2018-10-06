@@ -110,13 +110,13 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Segurança<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Módulo</a>
+                                    <a href="flot.html">Módulos</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Função</a>
+                                    <a href="morris.html">Funções</a>
                                 </li>    
                                 <li>
-                                    <a href="morris.html">Grupo Usuários</a>
+                                    <a href="morris.html">Grupos Usuários</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Usuários</a>

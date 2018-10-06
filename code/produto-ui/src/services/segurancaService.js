@@ -15,7 +15,7 @@ export default {
 	          localStorage.setItem('authorization', JSON.stringify(response.body.access_token));
 
 //	           ir para a home do sistema
-	          location.href = '/';
+	          location.href = '/#/admin';
 //	           this.$router.push({name: 'index'});
 	        }, err => {
 //	           console.log(err);

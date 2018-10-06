@@ -6,7 +6,7 @@
 	            <div class="panel panel-default" style="margin-top: 20px;">
 	                <div class="panel-heading">
 	                    Fornecedores
-	                    <div style="position: absolute; right: 23px; top: 6px;">
+	                    <div style="position: absolute; right: 23px; top: 26px;">
                         	<button type="button" class="btn btn-primary btn-circle" @click="cadastrar()">
                             	<i class="fa fa-plus"></i>
                         	</button>	                    

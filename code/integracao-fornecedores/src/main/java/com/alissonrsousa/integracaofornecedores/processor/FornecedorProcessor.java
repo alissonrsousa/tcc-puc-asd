@@ -38,9 +38,11 @@ public class FornecedorProcessor implements Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		fornecedor = (Fornecedor) exchange.getIn().getBody();
-		tokenFornecedor = realizarAutenticacao();
-		List<Produto> produtos = buscarProdutos();
-		atualizarProdutosLoja(produtos);
+		if (fornecedor.getUrlOauthIntegracao() != null && fornecedor.getUsuarioIntegracao() != null && fornecedor.getSenhaIntegracao() != null) {
+			tokenFornecedor = realizarAutenticacao();
+			List<Produto> produtos = buscarProdutos();
+			atualizarProdutosLoja(produtos);
+		}
 	}
 
 	private OauthToken realizarAutenticacao() {

@@ -24,9 +24,9 @@ public class FornecedoresRoute extends RouteBuilder {
 	
 	@Override
 	public void configure() throws Exception {
-		from("timer://fornecedores?period=60000&delay=5000").routeId("rota_fornecedores")
+		from("timer://fornecedores?period=10000&delay=5000").routeId("rota_fornecedores")
 		.setHeader(Exchange.HTTP_METHOD, constant("GET"))
-        .log("Token sendo passado ==> ${bean:tokenObj?method=getRefreshedToken}")
+//        .log("Token sendo passado ==> ${bean:tokenObj?method=getRefreshedToken}")
         .setHeader(AUTHORIZATION_HEADER, simple("Bearer " + "${bean:tokenObj?method=getRefreshedToken}"))
 		.to(urlApiGateway + URL_SERVICO_LISTA_FORNECEDORES)
 		.process(new Processor() {

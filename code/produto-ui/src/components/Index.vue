@@ -23,7 +23,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Entrar</a>
+                        <li><a href="#/login"><i class="fa fa-user fa-fw"></i> Entrar</a>
                         </li>
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Cadastrar</a>
                         </li>
@@ -52,13 +52,13 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Produtos Orgânicos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Categorias</a>
+                                    <a href="flot.html">Verduras</a>
                                 </li>
                                 <li>
-                                    <router-link to="/produto/fornecedores">Fornecedores</router-link>
+                                    <a href="flot.html">Frutas</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Produtos</a>
+                                    <a href="morris.html">Legumes</a>
                                 </li>    
                                 <li>
                                     <a href="morris.html">Promoções</a>
@@ -70,17 +70,14 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Doces<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Módulo</a>
+                                    <a href="flot.html">Tradicionais</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Função</a>
-                                </li>    
-                                <li>
-                                    <a href="morris.html">Grupo Usuários</a>
+                                    <a href="morris.html">Diet</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Usuários</a>
-                                </li>                                
+                                    <a href="morris.html">Promoções</a>
+                                </li>                                                                    
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>                         
@@ -88,8 +85,11 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Queijos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Clientes</a>
-                                </li>                               
+                                    <a href="flot.html">Queijos</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Promoções</a>
+                                </li>                                                               
                             </ul>
                             <!-- /.nav-second-level -->
                         </li> 
@@ -97,19 +97,10 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Verduras<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Formas Pagamento</a>
+                                    <a href="flot.html">Verduras</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Vendedores</a>
-                                </li>    
-                                <li>
-                                    <a href="morris.html">Pedidos</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Propagandas</a>
-                                </li> 
-                                <li>
-                                    <a href="morris.html">Dúvidas</a>
+                                    <a href="morris.html">Promoções</a>
                                 </li>                                                               
                             </ul>
                             <!-- /.nav-second-level -->
@@ -118,11 +109,23 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> Frutas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <a href="flot.html">Frutas</a>
+                                </li>  
+                                <li>
+                                    <a href="morris.html">Promoções</a>
+                                </li>                                                             
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-table fa-fw"></i> Promoções<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
                                     <a href="flot.html">Clientes</a>
                                 </li>                               
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>                                                                         
+                        </li>                                                                                                 
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -18,7 +18,7 @@ export default new Router({
 	  component: Index,
       children: [
   	    {
-  	      path: '/promocoes',
+  	      path: '/',
   	      name: 'Promocoes',
   	      component: Promocoes
   	    }

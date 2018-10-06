@@ -15,8 +15,9 @@ public class ProcessarFornecedorRoute extends RouteBuilder {
 	public void configure() throws Exception {
 		
 		from("direct:processa_fornecedor").routeId("processa_fornecedor")
-		.log("Processando fornecedor")
+		.log(">>>>>>>Iniciando Processamento fornecedor: ${body.nomeFantasia}")
 		.process(new FornecedorProcessor(urlApiGateway))
+		.log("<<<<<<<Finalizado Processamento fornecedor: ${body.nomeFantasia}")
 		.end();
 	}
 
